@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Curso Jasper Report</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+</head>
+<body>
+    <h1>Bem vindo ao curso!!!</h1>
+    
+    <h2>Relatório 01</h2>
+    <a th:href="@{/rel01(code='01', acao='v')}">Abrir</a>
+    <a th:href="@{/rel01(code='01', acao='d')}">Download</a>
+   
+    <br>
+    <hr>
+    <br>
+    
+    <h2>Relatório 08</h2>
+    <form th:action="@{/rel08/08}" method="GET">
+    	<select id="nivel" name="nivel">
+    		<option value="">Selecione o nível</option>
+    		<option th:each="nivel : ${niveis}" th:value="${nivel}" th:text="${nivel}"></option>
+    	</select>
+    	
+    	<select id="uf" name="uf">
+    		<option value="">Selecione a UF</option>
+    		<option th:each="uf : ${ufs}" th:value="${uf}" th:text="${uf}"></option>
+    	</select>
+    	
+    	<button type="submit">Buscar</button>
+    </form>
+    
+    <br>
+    <hr>
+    <br>
+    
+    <h2>Relatório 10</h2>
+    <a th:href="@{/rel10(code='10', acao='v')}">Abrir</a>
+    <a th:href="@{/rel10(code='10', acao='d')}">Download</a>
+    
+    <br>
+    <hr>
+    <br>
+    
+    <h2>Relatório 19</h2>
+    <form th:action="@{/funcionarios}" method="GET">
+    	<input type="text" id="nome" name="nome" placeholder="Nome do Funcionário"/>
+    	<button type="submit">Buscar</button>
+    </form>
+    <br>
+    <table>
+    	<thead>
+    		<th>Nome do Funcionário</th>
+    		<th>Emitir certificado</th>
+    	</thead>
+    	<tbody>
+    		<tr th:each="f : ${funcionarios}">
+    			<td th:text="${f.get('nome')}"></td>
+    			<td>
+    				<a th:href="@{/rel19/19(idf=${f.get('id')})}">PDF</a>|
+    				<a th:href="@{/rel19/html/19(idf=${f.get('id')})}">HTML</a>
+    			</td>
+    		</tr>
+    	</tbody>
+    </table>
+    <!-- 
+    <br>
+    <hr>
+    <br>
+    
+    <h2>Relatório 09</h2>
+    <form th:action="@{/rel09/09}" method="GET">
+    	<select id="nivel" name="nivel">
+    		<option value="">id</option>
+    		<option th:each="nivel : ${niveis}" th:value="${nivel}" th:text="${nivel}"></option>
+    	</select>
+    	
+    	<select id="uf" name="uf">
+    		<option value="">Selecione a UF</option>
+    		<option th:each="uf : ${ufs}" th:value="${uf}" th:text="${uf}"></option>
+    	</select>
+    	
+    	<button type="submit">Buscar</button>
+    </form>
+     -->
+    
+</body>
+</html>
